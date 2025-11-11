@@ -10,8 +10,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKV.Model", "TKV.Model\TKV.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKV.Test", "TKV.Test\TKV.Test.csproj", "{D9BFA1F4-FEDE-4FB5-8FAC-90923A958CCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKV.Common", "TKV.Common\TKV.Common.csproj", "{7D5BFEB8-69E0-4F66-B6A8-84F26867E894}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,9 +36,5 @@ Global
 		{D9BFA1F4-FEDE-4FB5-8FAC-90923A958CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9BFA1F4-FEDE-4FB5-8FAC-90923A958CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9BFA1F4-FEDE-4FB5-8FAC-90923A958CCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D5BFEB8-69E0-4F66-B6A8-84F26867E894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D5BFEB8-69E0-4F66-B6A8-84F26867E894}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D5BFEB8-69E0-4F66-B6A8-84F26867E894}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D5BFEB8-69E0-4F66-B6A8-84F26867E894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TKV.Common\TKV.Common.csproj" />
       <ProjectReference Include="..\TKV.Model\TKV.Model.csproj" />
     </ItemGroup>
 
