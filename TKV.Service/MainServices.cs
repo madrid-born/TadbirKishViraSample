@@ -12,9 +12,37 @@ public class MainServices(MyDbContext db)  : IMainServices
     {
         try
         {
-            if (requestModel is { Surgery: true, SurgeryBudget: 0 } or { Dentistry: true, DentistryBudget: 0 } or { Hospitalization: true, HospitalizationBudget: 0 })
+            if (requestModel.Surgery)
             {
-                throw new Exception("You cant use a coverage without putting any budget for it.");
+                switch (requestModel.SurgeryBudget)
+                {
+                    case < 5000:
+                        throw new Exception("You cant put less than 5000 budget for Surgery coverage.");
+                    case > 500000000:
+                        throw new Exception("You cant put more than 500000000 budget for Surgery coverage.");
+                }
+            }
+
+            if (requestModel.Dentistry)
+            {
+                switch (requestModel.DentistryBudget)
+                {
+                    case < 4000:
+                        throw new Exception("You cant put less than 4000 budget for Dentistry coverage.");
+                    case > 400000000:
+                        throw new Exception("You cant put more than 400000000 budget for Dentistry coverage.");
+                }
+            }
+
+            if (requestModel.Hospitalization)
+            {
+                switch (requestModel.HospitalizationBudget)
+                {
+                    case < 2000:
+                        throw new Exception("You cant put less than 2000 budget for Hospitalization coverage.");
+                    case > 200000000:
+                        throw new Exception("You cant put more than 200000000 budget for Hospitalization coverage.");
+                }
             }
             
             var request = new Request
@@ -23,38 +51,23 @@ public class MainServices(MyDbContext db)  : IMainServices
             };
             await db.Request.AddAsync(request);
             await db.SaveChangesAsync();
-
-            if (requestModel.Surgery)
+            
+            
+            foreach (CoverageType coverageType in Enum.GetValues(typeof(CoverageType)))
             {
-                var surgery = new RequestType
+                var type = new RequestType
                 {
                     RequestId = request.Id,
-                    CoverageId = (int)CoverageType.Surgery,
-                    Budget = requestModel.SurgeryBudget,
+                    CoverageId = (int)coverageType,
+                    Budget = coverageType switch
+                    {
+                        CoverageType.Surgery => requestModel.SurgeryBudget,
+                        CoverageType.Dentistry => requestModel.DentistryBudget,
+                        CoverageType.Hospitalization => requestModel.HospitalizationBudget,
+                        _ => 0
+                    }
                 };
-                await db.RequestType.AddAsync(surgery);
-            }
-
-            if (requestModel.Dentistry)
-            {
-                var dentistry = new RequestType
-                {
-                    RequestId = request.Id,
-                    CoverageId = (int)CoverageType.Dentistry,
-                    Budget = requestModel.DentistryBudget,
-                };
-                await db.RequestType.AddAsync(dentistry);
-            }
-
-            if (requestModel.Hospitalization)
-            {
-                var hospitalization = new RequestType
-                {
-                    RequestId = request.Id,
-                    CoverageId = (int)CoverageType.Hospitalization,
-                    Budget = requestModel.HospitalizationBudget,
-                };
-                await db.RequestType.AddAsync(hospitalization);
+                await db.RequestType.AddAsync(type);
             }
             
             await db.SaveChangesAsync();
