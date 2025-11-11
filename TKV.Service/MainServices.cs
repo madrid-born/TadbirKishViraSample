@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TKV.Interface;
-using TKV.Model.DbbContext;
+using TKV.Model.DbContext;
 using TKV.Model.DbModels;
 using TKV.Model.JsonModels;
 
