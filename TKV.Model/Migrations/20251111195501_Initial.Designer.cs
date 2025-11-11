@@ -11,7 +11,7 @@ using TKV.Model.DbbContext;
 namespace TKV.Model.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20251111183717_Initial")]
+    [Migration("20251111195501_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -69,8 +69,8 @@ namespace TKV.Model.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Budget")
-                        .HasColumnType("int");
+                    b.Property<double>("Budget")
+                        .HasColumnType("float");
 
                     b.Property<int>("CoverageId")
                         .HasColumnType("int");

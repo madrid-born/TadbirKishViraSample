@@ -45,7 +45,7 @@ namespace TKV.Model.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RequestId = table.Column<int>(type: "int", nullable: false),
                     CoverageId = table.Column<int>(type: "int", nullable: false),
-                    Budget = table.Column<int>(type: "int", nullable: false)
+                    Budget = table.Column<double>(type: "float", nullable: false)
                 },
                 constraints: table =>
                 {
