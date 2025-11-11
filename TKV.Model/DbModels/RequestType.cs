@@ -9,7 +9,7 @@ public class RequestType
     public int RequestId { get; set; }
     [ForeignKey("Coverage")]
     public int CoverageId { get; set; }
-    public int Budget { get; set; }
+    public double Budget { get; set; }
     public virtual Request? Request { get; set; }
     public virtual Coverage? Coverage { get; set; }
 
